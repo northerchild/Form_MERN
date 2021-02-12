@@ -21,21 +21,21 @@ export const Tables = () => {
                     <td>Otto</td>
                     <td>123456</td>
                     <td>1/12/1995</td>
-                    <td className="ml-2"><i className="fas fa-pen-square"></i> / <i className="fas fa-trash-alt"></i></td>
+                    <td className="ml-2"><i className="fas fa-pen-square pointer"></i> / <i className="fas fa-trash-alt pointer"></i></td>
                     </tr>
                     <tr>
                     <td>Jacob</td>
                     <td>Thornton</td>
                     <td>123456</td>
                     <td>1/12/1995</td>
-                    <td className="ml-2"><i className="fas fa-pen-square"></i> / <i className="fas fa-trash-alt"></i></td>
+                    <td className="ml-2"><i className="fas fa-pen-square pointer"></i> / <i className="fas fa-trash-alt pointer"></i></td>
                     </tr>
                     <tr>
                     <td>Larry</td>
                     <td>the Bird</td>
                     <td>123456</td>
                     <td>1/12/1995</td>
-                    <td className="ml-2"><i className="fas fa-pen-square"></i> / <i className="fas fa-trash-alt"></i></td>
+                    <td className="ml-2"><i className="fas fa-pen-square pointer"></i> / <i className="fas fa-trash-alt pointer"></i></td>
                     </tr>
                 </tbody>
             </table>
