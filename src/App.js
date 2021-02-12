@@ -1,9 +1,14 @@
+import { Form } from "./components/Form";
+import { Tables } from "./components/Tables";
 
 function App() {
   return (
-    <>
-      <h1>Formulario</h1>
-    </>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-4"><Form/></div>
+        <div className="col-md-8"><Tables/></div>
+      </div>
+    </div>
   );
 }
 
