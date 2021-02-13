@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
 import crearContactoReducer from './crearContactoReducer';
+import alertaReducer from './alertaReducer';
 
 export default combineReducers({
-    productos: crearContactoReducer,
+    usuario: crearContactoReducer,
+    alerta: alertaReducer
 })
