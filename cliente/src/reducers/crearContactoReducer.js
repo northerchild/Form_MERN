@@ -63,7 +63,17 @@ export default function foo(state=initialState, action){
                     usuarios: state.usuarios.map(usuario =>
                         usuario.id === action.payload.id ? usuario = action.payload : usuario
                         )
-                }          
+                }
+        case OBTENER_USUARIO_ELIMINAR:
+            return{
+                ...state,
+                productoeliminar: action.payload
+            }
+        case USUARIO_ELIMINAR_EXITO:
+            return{
+                ...state,
+                productos: state.productos.filter(producto => producto.id !== state.productoeliminar)
+            }                  
         default:
             return state;
     }

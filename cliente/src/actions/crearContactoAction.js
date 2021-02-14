@@ -14,11 +14,9 @@ import{
     COMENZAR_EDICION_USUARIO,
     USUARIO_EDITAR_EXITO,
     USUARIO_EDITAR_ERROR,
-    MOSTRAR_ALERTA,
-    OCULTAR_ALERTA
 } from '../types'
 
-//Crear nuevo producto
+//Crear nuevo usuario
 export function crearNuevoUsuarioAction(usuario){
     return async (dispatch) =>{
         dispatch(agregarUsuario())
@@ -81,9 +79,9 @@ const descargarUsuarios = ()=>({
     payload: true
 })
 
-const descargarUsuarioExitosa = productos => ({
+const descargarUsuarioExitosa = usuarios => ({
     type: DESCARGA_USUARIO_EXITO,
-    payload: productos
+    payload: usuarios
 })
 
 const descargarUsuarioError = ()=>({
@@ -92,8 +90,20 @@ const descargarUsuarioError = ()=>({
 })
 
 
+// Colocar usuario en edición
+export function obtenerUsuarioEditar(usuario) {
+    return (dispatch) => {
+        dispatch( obtenerUsuarioEditarAction(usuario) )
+    }
+}
 
-//Editar el producto
+const obtenerUsuarioEditarAction = usuario => ({
+    type: OBTENER_USUARIO_EDITAR,
+    payload: usuario
+})
+
+
+//Editar el usuario
 export function editarUsuarioAction(usuario){
     return async (dispatch) => {
         dispatch(editarUsuario())
@@ -111,12 +121,48 @@ const editarUsuario = () => ({
     type: COMENZAR_EDICION_USUARIO
 })
 
-const editarUsuarioExitoso = producto =>({
+const editarUsuarioExitoso = usuario =>({
     type: USUARIO_EDITAR_EXITO,
-    payload: producto
+    payload: usuario
 })
 
 const editarUsuarioError = ()=> ({
     type:USUARIO_EDITAR_ERROR,
     payload:true
+})
+
+
+//Selecciona y elimina el usuario
+export function borrarUsuarioAction(usuario){
+    return async (dispatch)=>{
+        dispatch(obtenerUsuarioEliminar(usuario));
+        try {
+            await clienteAxios.delete(`/usuarios/${usuario}`)
+            dispatch(eliminarUsuarioExito())
+             // Si se elimina, mostrar alerta
+             Swal.fire(
+                'Eliminado',
+                'El usuario se eliminó correctamente',
+                'success'
+            )
+
+        } catch (error) {
+            console.log(error);
+            dispatch(eliminarUsuarioError())
+        }
+    }
+}
+
+export const obtenerUsuarioEliminar = id =>({
+    type: OBTENER_USUARIO_ELIMINAR,
+    payload:id 
+})
+
+const eliminarUsuarioExito = () => ({
+    type: USUARIO_ELIMINAR_EXITO
+})
+
+const eliminarUsuarioError = () =>({
+    type: USUARIO_ELIMINAR_ERROR,
+    payload: true
 })

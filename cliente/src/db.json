@@ -47,6 +47,14 @@
       "email": "carlosamc-7@hotmail.com",
       "date": "2021-02-04",
       "id": 6
+    },
+    {
+      "name": "Juan",
+      "lastName": "Perez",
+      "identification": "12312311231",
+      "email": "perez@gmail.com",
+      "date": "2021-02-04",
+      "id": 7
     }
   ]
 }
