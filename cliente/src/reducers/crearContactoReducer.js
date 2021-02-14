@@ -9,11 +9,8 @@ import{
     USUARIO_ELIMINAR_EXITO,
     USUARIO_ELIMINAR_ERROR,
     OBTENER_USUARIO_EDITAR,
-    COMENZAR_EDICION_USUARIO,
     USUARIO_EDITAR_EXITO,
     USUARIO_EDITAR_ERROR,
-    MOSTRAR_ALERTA,
-    OCULTAR_ALERTA
 } from '../types'
 //datos iniciales 
 const initialState = {
@@ -37,6 +34,15 @@ export default function foo(state=initialState, action){
                 ...state,
                 loading:false,
                 usuarios: [...state.usuarios,action.payload]
+            }
+        case AGREGAR_USUARIO_ERROR:
+        case DESCARGA_USUARIO_ERROR:
+        case USUARIO_ELIMINAR_ERROR:
+        case USUARIO_EDITAR_ERROR:
+            return{
+                ...state,
+                loading:false,
+                error:action.payload
             }
         default:
             return state;
