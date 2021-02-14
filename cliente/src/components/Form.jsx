@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import {useForm} from '../customHooks/useForm'
 import { mostrarAlerta, ocultarAlertaAction } from '../actions/alertaAction';
 import { crearNuevoUsuarioAction } from '../actions/crearContactoAction'
 
 export const Form = () => {
-    const [formValues, handleInputChange] = useForm({
+    const [formValues, handleInputChange, reset] = useForm({
         name:'',
         lastName:'',
         identification:'',
@@ -13,14 +13,6 @@ export const Form = () => {
         date:'',
     });
     const {name, lastName,identification,email,date} = formValues;
-    //State del componente
-    const [contacto,guardarContacto] = useState({
-        name:'',
-        lastName:'',
-        identification:'',
-        email:'',
-        date:'',
-    });
     //Utilizar useDispatch y crea una nueva funcion
     const dispatch = useDispatch();
     //Acceder al state del store
@@ -49,6 +41,7 @@ export const Form = () => {
             email,
             date,
         });
+        reset();
         console.log(formValues)
     }
     return (
@@ -79,6 +72,8 @@ export const Form = () => {
                 </div>
                 <button type="submit" className="btn btn-primary">Guardar / Actualizar</button>
             </form>
+            {error ? <p className="alert alert-danger p2 mt-4 text-center">Hubo un error</p> 
+                : null}
         </>
     )
 }
