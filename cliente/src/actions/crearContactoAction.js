@@ -90,3 +90,33 @@ const descargarUsuarioError = ()=>({
     type: DESCARGA_USUARIO_ERROR,
     payload:true
 })
+
+
+
+//Editar el producto
+export function editarUsuarioAction(usuario){
+    return async (dispatch) => {
+        dispatch(editarUsuario())
+        try {
+            await clienteAxios.put(`/usuarios/${usuario.id}`,usuario)
+            dispatch(editarUsuarioExitoso(usuario))
+        } catch (error) {
+            console.log(error);
+            dispatch(editarUsuarioError());
+        }
+    }
+}
+
+const editarUsuario = () => ({
+    type: COMENZAR_EDICION_USUARIO
+})
+
+const editarUsuarioExitoso = producto =>({
+    type: USUARIO_EDITAR_EXITO,
+    payload: producto
+})
+
+const editarUsuarioError = ()=> ({
+    type:USUARIO_EDITAR_ERROR,
+    payload:true
+})
