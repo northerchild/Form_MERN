@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {useDispatch, useSelector} from 'react-redux';
 import {useForm} from '../customHooks/useForm'
+import { mostrarAlerta, ocultarAlertaAction } from '../actions/alertaAction';
+import { crearNuevoUsuarioAction } from '../actions/crearContactoAction'
 
 export const Form = () => {
     const [formValues, handleInputChange] = useForm({
@@ -10,14 +13,49 @@ export const Form = () => {
         date:'',
     });
     const {name, lastName,identification,email,date} = formValues;
+    //State del componente
+    const [contacto,guardarContacto] = useState({
+        name:'',
+        lastName:'',
+        identification:'',
+        email:'',
+        date:'',
+    });
+    //Utilizar useDispatch y crea una nueva funcion
+    const dispatch = useDispatch();
+    //Acceder al state del store
+    const error = useSelector(state => state.usuario.error);
+    const alerta = useSelector(state => state.alerta.alerta);
+    //Mandar a llamar el action
+    const agregarUsuario = usuario => dispatch(crearNuevoUsuarioAction(usuario));
     const handleContact = e =>{
         e.preventDefault();
+        // validar formulario
+        if(name.trim() === '' || lastName.trim() === '' || 
+           identification.length < 10 || email.trim ==='' || date.trim === '') {
+            const alerta = {
+                msg: 'No olvides llenar todos los campos',
+                classes: 'alert alert-danger text-center text-uppercase p3'
+            }
+            dispatch( mostrarAlerta(alerta) );
+
+            return;
+        }
+        dispatch(ocultarAlertaAction())
+        agregarUsuario({
+            name,
+            lastName,
+            identification,
+            email,
+            date,
+        });
         console.log(formValues)
     }
     return (
         <>
             <h2 className="mb-4 mt-4">Formulario</h2>
             <hr/>
+            {alerta ? <p className={alerta.classes}>{alerta.msg}</p>:null}
             <form onSubmit={handleContact}>
                 <div className="form-group mb-3">
                     <label htmlFor="name">Nombre</label>
