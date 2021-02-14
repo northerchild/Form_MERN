@@ -60,3 +60,33 @@ const agregarUsuarioError = estado =>({
     type: AGREGAR_USUARIO_ERROR,
     payload: estado
 }) 
+
+
+//Funcion que trae los elementos de la BD
+export function obtenerUsuarioAction(){
+    return async(dispatch) =>{
+        dispatch(descargarUsuarios());
+        try {
+            const respuesta = await clienteAxios.get('/usuarios')
+            dispatch(descargarUsuarioExitosa(respuesta.data))
+        } catch (error) {
+            console.log(error)
+            dispatch(descargarUsuarioError())
+        }
+    }
+}
+
+const descargarUsuarios = ()=>({
+    type: COMENZAR_DESCARGA_USUARIOS,
+    payload: true
+})
+
+const descargarUsuarioExitosa = productos => ({
+    type: DESCARGA_USUARIO_EXITO,
+    payload: productos
+})
+
+const descargarUsuarioError = ()=>({
+    type: DESCARGA_USUARIO_ERROR,
+    payload:true
+})

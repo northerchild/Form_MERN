@@ -44,6 +44,26 @@ export default function foo(state=initialState, action){
                 loading:false,
                 error:action.payload
             }
+        case DESCARGA_USUARIO_EXITO:
+            return {
+                ...state,
+                loading:false,
+                error:null,
+                usuarios: action.payload
+            }  
+        case OBTENER_USUARIO_EDITAR:
+                return{
+                    ...state,
+                    usuarioeditar: action.payload
+                }
+        case USUARIO_EDITAR_EXITO:
+                return{
+                    ...state,
+                    usuarioeditar:null,
+                    usuarios: state.usuarios.map(usuario =>
+                        usuario.id === action.payload.id ? usuario = action.payload : usuario
+                        )
+                }          
         default:
             return state;
     }
