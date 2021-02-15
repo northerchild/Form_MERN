@@ -18,7 +18,7 @@ const initialState = {
     error:false,
     loading:false,
     usuarioeliminar:null,
-    usuarioeditar:null
+    usuarioeditar:null,
 }
 
 export default function foo(state=initialState, action){
@@ -67,12 +67,12 @@ export default function foo(state=initialState, action){
         case OBTENER_USUARIO_ELIMINAR:
             return{
                 ...state,
-                productoeliminar: action.payload
+                usuarioeliminar: action.payload
             }
         case USUARIO_ELIMINAR_EXITO:
             return{
                 ...state,
-                productos: state.productos.filter(producto => producto.id !== state.productoeliminar)
+                usuarios: state.usuarios.filter(usuario => usuario.id !== state.usuarioeliminar)
             }                  
         default:
             return state;

@@ -16,15 +16,17 @@ export const Form = () => {
     //Utilizar useDispatch y crea una nueva funcion
     const dispatch = useDispatch();
     //Acceder al state del store
+    const usuarios = useSelector(state => state.usuario.usuarios);
     const error = useSelector(state => state.usuario.error);
     const alerta = useSelector(state => state.alerta.alerta);
+    console.log(usuarios)
     //Mandar a llamar el action
     const agregarUsuario = usuario => dispatch(crearNuevoUsuarioAction(usuario));
     const handleContact = e =>{
         e.preventDefault();
         // validar formulario
         if(name.trim() === '' || lastName.trim() === '' || 
-           identification.length < 10 || email.trim ==='' || date.trim === '') {
+           identification.length < 7 || email.trim ==='' || date.trim === '') {
             const alerta = {
                 msg: 'No olvides llenar todos los campos',
                 classes: 'alert alert-danger text-center text-uppercase p3'

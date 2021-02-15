@@ -1,60 +1,20 @@
 {
   "usuarios": [
     {
-      "id": 1,
-      "nombre": "Fernando",
-      "apellido": "ospina",
-      "cedula": "123456",
-      "email": "Fernando@hotmail.com",
-      "fecha": "1995-02-16"
-    },
-    {
-      "id": 2,
-      "nombre": "jesus",
-      "apellido": "paredes",
-      "cedula": "321233",
-      "email": "correo@correo.com",
-      "fecha": "1990-07-10"
-    },
-    {
-      "id": 3,
-      "nombre": "Elizabeth",
-      "apellido": "Gutierrez",
-      "cedula": "1278945",
-      "email": "correo1@correo@gmail.com",
-      "fecha": "1995-03-15"
-    },
-    {
       "name": "Jhonatan Ferney",
       "lastName": "Ospina Coy",
       "identification": "1013656390",
       "email": "osarus-13@hotmail.com",
       "date": "1995-02-16",
-      "id": 4
+      "id": 1
     },
     {
-      "name": "pedro",
-      "lastName": "reyes",
-      "identification": "4564564654564",
-      "email": "pedro@pedro.com",
-      "date": "2021-02-11",
-      "id": 5
-    },
-    {
-      "name": "Carlos",
-      "lastName": "Montes",
-      "identification": "74878546546548",
-      "email": "carlosamc-7@hotmail.com",
-      "date": "2021-02-04",
-      "id": 6
-    },
-    {
-      "name": "Juan",
-      "lastName": "Perez",
-      "identification": "12312311231",
-      "email": "perez@gmail.com",
-      "date": "2021-02-04",
-      "id": 7
+      "name": "Josele",
+      "lastName": "Vega",
+      "identification": "12312312312312",
+      "email": "correo@josele.com",
+      "date": "2021-02-08",
+      "id": 2
     }
   ]
 }

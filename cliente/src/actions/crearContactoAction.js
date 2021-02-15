@@ -133,11 +133,11 @@ const editarUsuarioError = ()=> ({
 
 
 //Selecciona y elimina el usuario
-export function borrarUsuarioAction(usuario){
+export function borrarUsuarioAction(id){
     return async (dispatch)=>{
-        dispatch(obtenerUsuarioEliminar(usuario));
+        dispatch(obtenerUsuarioEliminar(id));
         try {
-            await clienteAxios.delete(`/usuarios/${usuario}`)
+            await clienteAxios.delete(`/usuarios/${id}`)
             dispatch(eliminarUsuarioExito())
              // Si se elimina, mostrar alerta
              Swal.fire(
